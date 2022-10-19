@@ -20,5 +20,6 @@ func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
 	routes.InitAuthRoute(db, router)
+	routes.PhotosRoute(db, router)
 	return router
 }

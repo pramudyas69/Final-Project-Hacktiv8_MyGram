@@ -3,9 +3,10 @@ package register
 import (
 	"MyGram/controllers/user-controllers/register"
 	"MyGram/utils"
-	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type handler struct {
@@ -40,6 +41,7 @@ func (h *handler) RegisterHandler(ctx *gin.Context) {
 			utils.APIResponse(ctx, "Generate accessToken failed", http.StatusBadRequest, http.MethodPost, nil)
 		}
 
-		utils.APIResponse(ctx, "Register new account successfully", http.StatusCreated, http.MethodPost, nil)
+		resultRegister.Password = ""
+		utils.APIResponse(ctx, "Register new account successfully", http.StatusCreated, http.MethodPost, resultRegister)
 	}
 }
